@@ -1,0 +1,33 @@
+.Room {
+    max-width: 80vw;
+    min-width: 60vw;
+    max-height: 80vh;
+    min-height: 60vh;
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+    border-radius: 2rem;
+    background-color: white;
+}
+
+.Hidden {
+    visibility: hidden;
+}
+
+.standard-button {
+    background-color: #0F7173;
+    border-radius: 15px;
+    padding: 20px;
+    border: none;
+    font-size: 32px;
+    color: white;
+}
+
+.standard-anchor {
+    background-color: #0F7173;
+    border-radius: 15px;
+    padding: 20px;
+    border: none;
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+}
