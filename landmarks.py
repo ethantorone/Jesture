@@ -18,4 +18,12 @@ for landmark in results.multi_hand_landmarks:
 
 array = np.array(array)
 
+z_array = array[:,2]
 
+array = array[:,[0, 1]]
+
+z_array = np.tile(z_array, (2, 1)).transpose()
+
+normal_array = np.divide(array, z_array)
+
+print(normal_array)
