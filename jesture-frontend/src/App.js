@@ -1,12 +1,17 @@
-
 import './App.css';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+
+const router = createBrowserRouter([
+  {
+    
+  },
+]);
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+      
     </div>
   );
 }
