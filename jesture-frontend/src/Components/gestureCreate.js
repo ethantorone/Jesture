@@ -71,7 +71,10 @@ const ActionSelect = () => {
 
 function GestureCreate(props) {
   return (
-    <div>
+    <div className="gesture-page">
+      <header className="gesture-header">
+        <a className="exit-button" href='/'>Return to Room</a>
+      </header>
       <WebcamCapture/>
       <ActionSelect/>
     </div>

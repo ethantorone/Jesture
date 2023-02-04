@@ -1,3 +1,7 @@
+div {
+  z-index: 1;
+}
+
 .cameraAndButtons {
   display: flex;
   flex-direction: column;
@@ -5,7 +9,7 @@
 }
 
 .webCam {
-  margin-top: 5em;
+  margin-top: 4em;
   border-radius: 45px;
   max-width: 30%;
   align-self: center;
@@ -37,4 +41,27 @@
 .actionsList {
   display: flex;
   flex-direction: column;
+}
+
+.gesture-page {
+  width: 100%
+}
+
+.exit-button {
+  background-color: #0F7173;
+  border-radius: 15px;
+  padding: 0.5rem;
+  padding-top: 0.25rem;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;  
+  margin: 1rem;
+}
+
+.gesture-header {
+  display: flex;
+  justify-content: start;
+  position: fixed;
+  /* z-index: -1; */
 }
