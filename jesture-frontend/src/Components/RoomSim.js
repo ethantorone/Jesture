@@ -1,11 +1,13 @@
 import roomSimStyles from './RoomSim.modules.css'
 import ReactPlayer from 'react-player/youtube'
 import { useState } from 'react';
+import Cup from './Entities/Cup';
 
 function RoomSim(props) {
     const [playing, setPlaying] = useState(false)
     const [volume, setVolume] = useState(1)
     const [url, setUrl] = useState('https://youtu.be/Km71Rr9K-Bw')
+    const [backgroundStlye, setBackgroundStyle] = useState("background-color:")
 
     const togglePlay = (e) => {
         setPlaying(!playing)
@@ -19,6 +21,10 @@ function RoomSim(props) {
         setVolume(volume - 0.1 < 0 ? 0 : volume - 0.1)
     }
 
+    const changeBackground = (color) => {
+
+    }
+
     return (
         <div className="RoomSim">
             <div className="Room">
@@ -30,7 +36,7 @@ function RoomSim(props) {
                         controls={true}
                     ></ReactPlayer>
                 </div>
-                
+                <Cup></Cup>
             </div>
             <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
             <button className="standard-button" onClick={increaseVolume}>IncVol</button>
