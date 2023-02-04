@@ -2,8 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import processing
-from collections import deque
-from multiprocessing.pool import ThreadPool
+from time import sleep
 
 mp_hands = mp.solutions.hands
 
@@ -32,32 +31,17 @@ def process(image):
     return image
 
 
-vid = cv2.VideoCapture(2)
-
-thread_num = cv2.getNumberOfCPUs()
-pool = ThreadPool(processes=thread_num)
-pending = deque()
+vid = cv2.VideoCapture(0)
 
 while vid.isOpened():
+    ret, image = vid.read()
+    if ret:
+        image = process(image)
+    cv2.imshow('', image)
 
-    # CONSUME
-    while len(pending) > 0 and pending[0].ready():
-        res = pending.popleft().get()
-        cv2.imshow('', res)
-
-    # POPULATE
-    if len(pending) < thread_num:
-        ret, image = vid.read()
-        if ret:
-            task = pool.apply_async(process, (image.copy(),))
-            pending.append(task)
+    sleep(0.05)
 
     # PREVIEW
-    if cv2.waitKey(1) & 0xFF==ord('q'):
-        break
-
-
-    cv2.imshow('Hands', cv2.flip(image, 1))
     if cv2.waitKey(1) & 0xFF==ord('q'):
         break
 
