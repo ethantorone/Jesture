@@ -47,6 +47,8 @@ def get_distances(array):
     array = array[:,[0, 1]]
     z_array = np.tile(z_array, (2, 1)).transpose() + 1
     normal_array = np.divide(array, z_array)
+    max = np.amax(normal_array)
+    normal_array = normal_array / max
     wrist = np.tile(normal_array[0], (21, 1))
     distances = np.sum(np.square(np.subtract(normal_array, wrist)), axis=1)
     return distances
@@ -98,3 +100,21 @@ def mean_std(array):
     std = np.std(array, axis = 0)
 
     return np.vstack([mean, std]).transpose()
+
+def get_confidence(distances, mean_std):
+    """
+    Get confidence of match between detected hand and existing gesture
+    
+    Args:
+        distances [np array] array of distances from hand detection
+        mean_std [np array] mean_std array of stored gesture to validate against
+
+    Return:
+        confidence [float] confidence in the match
+    """
+
+    dist_sum = np.sum(np.abs(np.subtract(mean_std[:,0], distances)))
+    std_sum = np.sum(mean_std[:, 1])
+    confidence = 1 - (abs(dist_sum - std_sum) / std_sum)
+    return confidence
+    
