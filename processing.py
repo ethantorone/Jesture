@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 
-def get_landmarks(file):
+def get_landmarks(image):
     """
     Finds x,y coordinates for each hand landmark in image
 
@@ -16,7 +16,7 @@ def get_landmarks(file):
     mp_hands = mp.solutions.hands
 
     hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
-    image = cv2.flip(cv2.imread("./images/image4.jpg"), 1)
+    image = cv2.flip(image, 1)
 
     # Convert the BGR image to RGB before processing.
     results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
@@ -48,5 +48,37 @@ def get_distances(array):
     distances = np.sum(np.square(np.subtract(normal_array, wrist)), axis=1)
     return distances
 
+def distort(image):
+    """
+    Returns a list of distorted copies of the image
 
+    Args:
+        openCV image
+    Returns:
+    array of openCV images
+    """
+    
+    # Fixed perspective points
+    pts = np.float32([
+            [[100,100],[1280,0],[0,720],[1280,720]],
+            [[0,0],[1000,0],[0,720],[1280,720]],
+            [[0,0],[1280,0],[0,600],[1280,720]],
+            [[0,0],[1280,0],[0,720],[1200,600]],
+            [[0,0],[1280,0],[0,720],[1280,720]],
+        ])
+    pts1 = np.float32([[100,100],[1280,0],[0,720],[1280,720]])
+    pts2 = np.float32([[0,0],[1000,0],[0,720],[1280,720]])
+    pts3 = np.float32([[0,0],[1280,0],[0,600],[1280,720]])
+    pts4 = np.float32([[0,0],[1280,0],[0,720],[1200,600]])
+    pts5 = np.float32([[0,0],[1280,0],[0,720],[1280,720]])
+
+    # Creates the transformation matrix and distorts image
+    dst = [] 
+    for i in range(5):
+        M = cv2.getPerspectiveTransform(pts[i], pts[4])
+        img = cv2.warpPerspective(image, M, (1280, 720))
+        dst.append(img)
+        dst.append(cv2.flip(img, 1))
+
+    return dst
 

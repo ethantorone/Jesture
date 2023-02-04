@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import mediapipe as mp
+import processing
 
 mp_hands = mp.solutions.hands
 
@@ -32,3 +33,9 @@ wrist = np.tile(normal_array[0], (21, 1))
 
 distances = np.sum(np.square(np.subtract(normal_array, wrist)), axis=1)
 print(distances)
+
+dst = processing.distort(image)
+for img in dst:
+    cv2.imshow('', img)
+    cv2.waitKey(0)
+
