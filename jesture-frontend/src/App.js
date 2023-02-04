@@ -1,6 +1,6 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
-import GestureCreate from './components/gestureCreate';
-import RoomSim from './components/RoomSim';
+import GestureCreate from './Components/gestureCreate';
+import RoomSim from './Components/RoomSim';
 import './App.css';
 
 const router = createBrowserRouter([
