@@ -22,8 +22,13 @@ z_array = array[:,2]
 
 array = array[:,[0, 1]]
 
-z_array = np.tile(z_array, (2, 1)).transpose()
+z_array = np.tile(z_array, (2, 1)).transpose() + 1
 
 normal_array = np.divide(array, z_array)
 
 print(normal_array)
+
+wrist = np.tile(normal_array[0], (21, 1))
+
+distances = np.sum(np.square(np.subtract(normal_array, wrist)), axis=1)
+print(distances)
