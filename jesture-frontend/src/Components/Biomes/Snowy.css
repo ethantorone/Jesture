@@ -1,0 +1,87 @@
+.tree1{
+    height: 0;
+    width: 0;
+    border-bottom: 6rem solid #5b6b09;
+    border-left: 1.8rem solid transparent;
+    border-right: 1.8rem solid transparent;
+    position: relative;
+    left:10rem;
+    top:-5rem;
+    z-index: 2;
+}
+.tree2{
+    height: 0;
+    width: 0;
+    border-bottom: 10rem solid #718710;
+    border-left: 2rem solid transparent;
+    border-right: 2rem solid transparent;
+    position: relative;
+    left:7rem;
+    top:-15rem;
+    z-index: 5;
+}
+
+.snow{
+    height: 40px;
+    width: 64vw;
+    background-color: white;
+    position: relative;
+    left: .4rem;
+    top: -2rem;
+    border-radius: 50px;
+    z-index: 5;
+}
+
+.snowfall{
+    background: url(https://i.imgur.com/T0mBFg2.png);
+    background-size: 350px 200px;
+    background-repeat: repeat;
+    height: 64vh;
+    width: 64vw;
+    border-radius: 2rem;
+    animation:snowfall 5s linear forwards infinite; 
+    -webkit-animation:snowfall 5s linear forwards infinite; 
+    z-index: 9
+}
+
+@keyframes snowfall{
+    0%{
+      background-position: 0 0;
+    }
+    20%{
+      background-position: 20px 20px;
+    }
+    40%{
+      background-position: 40px 40px;
+    }
+    60%{
+      background-position: 60px 60px;
+    }
+    80%{
+      background-position: 80px 80px;
+    }
+    100%{
+      background-position: 100px 100px;
+    }
+}
+@-webkit-keyframes snowfall{
+    0%{
+      background-position: 0 0;
+    }
+    20%{
+      background-position: 20px 20px;
+    }
+    40%{
+      background-position: 40px 40px;
+    }
+    60%{
+      background-position: 60px 60px;
+    }
+    80%{
+      background-position: 80px 80px;
+    }
+    100%{
+      background-position: 100px 100px;
+    }
+}
+

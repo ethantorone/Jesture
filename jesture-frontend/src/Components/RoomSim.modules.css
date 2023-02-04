@@ -1,8 +1,6 @@
 .Room {
-    max-width: 80vw;
-    min-width: 60vw;
-    max-height: 80vh;
-    min-height: 60vh;
+    width:65vw;
+    height: 65vh;
     margin-top: 10rem;
     margin-bottom: 3rem;
     border-radius: 2rem;
@@ -32,4 +30,18 @@
     font-size: 2rem;
     color: white;
     text-decoration: none;
+}
+
+
+.window {
+    width: 64vw;
+    height: 64vh;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 0.5rem;
+    border-radius: 2rem;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
 }

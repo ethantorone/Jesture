@@ -2,6 +2,7 @@ import roomSimStyles from './RoomSim.modules.css'
 import ReactPlayer from 'react-player/youtube'
 import { useState } from 'react';
 import Cup from './Entities/Cup';
+import Snowy from './Biomes/Snowy';
 
 function RoomSim(props) {
     const [playing, setPlaying] = useState(false)
@@ -36,7 +37,8 @@ function RoomSim(props) {
                         controls={true}
                     ></ReactPlayer>
                 </div>
-                <Cup></Cup>
+                <div className='window'></div>
+                <Snowy></Snowy>
             </div>
             <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
             <button className="standard-button" onClick={increaseVolume}>IncVol</button>
