@@ -1,0 +1,14 @@
+.Room {
+    max-width: 80vw;
+    min-width: 60vw;
+    max-height: 80vh;
+    min-height: 60vh;
+    margin-top: 10rem;
+    margin-bottom: 3rem;
+    border-radius: 2rem;
+    background-color: white;
+}
+
+.Hidden {
+    visibility: hidden;
+}
