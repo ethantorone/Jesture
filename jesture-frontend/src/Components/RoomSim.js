@@ -32,9 +32,10 @@ function RoomSim(props) {
                 </div>
                 
             </div>
-            <button onClick={togglePlay}>Play/Pause</button>
-            <button onClick={increaseVolume}>IncVol</button>
-            <button onClick={decreaseVolume}>DecVol</button>
+            <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
+            <button className="standard-button" onClick={increaseVolume}>IncVol</button>
+            <button className="standard-button" onClick={decreaseVolume}>DecVol</button>
+            <a className="standard-anchor" href='/create-gesture'>Create Gesture</a>
         </div>
     )
 }

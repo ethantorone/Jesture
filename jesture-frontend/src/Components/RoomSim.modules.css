@@ -12,3 +12,22 @@
 .Hidden {
     visibility: hidden;
 }
+
+.standard-button {
+    background-color: #0F7173;
+    border-radius: 15px;
+    padding: 20px;
+    border: none;
+    font-size: 32px;
+    color: white;
+}
+
+.standard-anchor {
+    background-color: #0F7173;
+    border-radius: 15px;
+    padding: 20px;
+    border: none;
+    font-size: 32px;
+    color: white;
+    text-decoration: none;
+}
