@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 
-def get_landmarks(image):
+def get_landmarks(image, hands):
     """
     Finds x,y coordinates for each hand landmark in image
 
@@ -14,9 +14,6 @@ def get_landmarks(image):
         None if no landmarks are found
     """
 
-    mp_hands = mp.solutions.hands
-
-    hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
     image = cv2.flip(image, 1)
 
     # Convert the BGR image to RGB before processing.

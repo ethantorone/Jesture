@@ -13,7 +13,7 @@ for file in os.listdir("./images"):
     images = []
     distorted = processing.distort(cv2.imread("./images/" + file))
     for image in distorted:
-        landmarks = processing.get_landmarks(image)
+        landmarks = processing.get_landmarks(image, hands)
         if landmarks is not None:
             images.append(processing.get_distances(landmarks))
     
@@ -22,15 +22,13 @@ for file in os.listdir("./images"):
         mean_std= processing.mean_std(images)
         gestures.store_gesture(mean_std, file[:-4])
 
-mp_hands = mp.solutions.hands
-hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 
 def process(image):
     image.flags.writeable = False
     results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
-    landmarks = processing.get_landmarks(image)
+    landmarks = processing.get_landmarks(image, hands)
     if results.multi_hand_landmarks and landmarks is not None:
         for hand_landmarks in results.multi_hand_landmarks:
             mp_drawing.draw_landmarks(
