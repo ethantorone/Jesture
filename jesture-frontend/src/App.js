@@ -1,12 +1,10 @@
-
 import './App.css';
+import CameraPage from './Components/cameraPage'
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        
-      </header>
+        <CameraPage/>
     </div>
   );
 }
