@@ -44,9 +44,12 @@ def process(image):
 
     return image
 
-# process(test)
+dst = processing.distort(test)
+for image in dst:
+    cv2.imshow('', image)
+    cv2.waitKey(0)
 
-
+"""
 vid = cv2.VideoCapture(0)
 
 while vid.isOpened():
@@ -63,3 +66,4 @@ while vid.isOpened():
 
 vid.release()
 cv2.destroyAllWindows()
+"""

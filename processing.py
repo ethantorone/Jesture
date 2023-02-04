@@ -68,14 +68,9 @@ def distort(image):
             [[100,100],[1280,0],[0,720],[1280,720]],
             [[0,0],[1000,0],[0,720],[1280,720]],
             [[0,0],[1280,0],[0,600],[1280,720]],
-            [[0,0],[1280,0],[0,720],[1200,600]],
+            [[0,0],[1280,0],[0,720],[1000,600]],
             [[0,0],[1280,0],[0,720],[1280,720]],
         ])
-    pts1 = np.float32([[100,100],[1280,0],[0,720],[1280,720]])
-    pts2 = np.float32([[0,0],[1000,0],[0,720],[1280,720]])
-    pts3 = np.float32([[0,0],[1280,0],[0,600],[1280,720]])
-    pts4 = np.float32([[0,0],[1280,0],[0,720],[1200,600]])
-    pts5 = np.float32([[0,0],[1280,0],[0,720],[1280,720]])
 
     # Creates the transformation matrix and distorts image
     dst = [] 
@@ -84,6 +79,11 @@ def distort(image):
         img = cv2.warpPerspective(image, M, (1280, 720))
         dst.append(img)
         dst.append(cv2.flip(img, 1))
+        dst.append(cv2.resize(img, None, fx=2, fy=2, interpolation = cv2.INTER_LINEAR)[360:1080, 640:1920])
+        base = np.zeros((720, 1280, 3), dtype=np.uint8)
+        cv2.rectangle(base, (0,0), (1280, 720), (0,0,0),-1)
+        base[180:540, 320:960] = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation = cv2.INTER_AREA)
+        dst.append(base)
 
     return dst
 
