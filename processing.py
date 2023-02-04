@@ -7,10 +7,11 @@ def get_landmarks(image):
     Finds x,y coordinates for each hand landmark in image
 
     Args:
-        file [str]: path to image file to parse
+        image [opencv image]: image to parse
 
     Returns: 
         array [np array] (21 x 2) of x, y coordinates corresponding to each landmark
+        None if no landmarks are found
     """
 
     mp_hands = mp.solutions.hands
@@ -21,13 +22,15 @@ def get_landmarks(image):
     # Convert the BGR image to RGB before processing.
     results = hands.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
     array = []
+    if results.multi_hand_landmarks:
+        # Parse result json into numpy array
+        for landmark in results.multi_hand_landmarks:
+            for i in range(21):
+                array.append([landmark.landmark[i].x, landmark.landmark[i].y, landmark.landmark[i].z])
+        array = np.array(array)
+        return array
 
-    # Parse result json into numpy array
-    for landmark in results.multi_hand_landmarks:
-        for i in range(21):
-            array.append([landmark.landmark[i].x, landmark.landmark[i].y, landmark.landmark[i].z])
-    array = np.array(array)
-    return array
+    return None
 
 def get_distances(array):
     """
@@ -55,7 +58,7 @@ def distort(image):
     Args:
         openCV image
     Returns:
-    array of openCV images
+        array of openCV images
     """
     
     # Fixed perspective points
@@ -82,3 +85,16 @@ def distort(image):
 
     return dst
 
+def mean_std(array):
+    """
+    Get mean and std for each landmark over several distance arrays
+
+    Args:
+        array [np array]: array of distances
+    Returns:
+        array [np array]: (21x2) [mean, std] for each landmark
+    """
+    mean = np.mean(array, axis = 0)
+    std = np.std(array, axis = 0)
+
+    return np.vstack([mean, std]).transpose()
