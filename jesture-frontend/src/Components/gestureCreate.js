@@ -1,6 +1,6 @@
 import React from "react";
 import Webcam from "react-webcam";
-import cameraPageStyles from "./cameraPage.modules.css";
+import gestureCreateStyles from "./gestureCreate.modules.css";
 
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
@@ -20,7 +20,7 @@ const WebcamCapture = () => {
         ref={webcamRef}
         screenshotFormat="image/jpeg"
       />
-      <button onClick={capture}>Capture photo</button>
+      <button className="captureButton" onClick={capture}>CAPTURE PHOTO</button>
       {imgSrc && (
         <img
           src={imgSrc}
@@ -31,7 +31,7 @@ const WebcamCapture = () => {
 };
 
 
-function CameraPage(props) {
+function GestureCreate(props) {
   return (
     <div>
       <WebcamCapture/>
@@ -39,4 +39,4 @@ function CameraPage(props) {
   );
 };
 
-export default CameraPage;
+export default GestureCreate;

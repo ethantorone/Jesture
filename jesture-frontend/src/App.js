@@ -1,8 +1,7 @@
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import GestureCreate from './Components/gestureCreate';
 import RoomSim from './components/RoomSim';
-import CameraPage from './components/cameraPage';
 import './App.css';
-import { Action } from '@remix-run/router';
 
 const router = createBrowserRouter([
   {

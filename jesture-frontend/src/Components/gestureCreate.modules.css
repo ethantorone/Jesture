@@ -1,0 +1,13 @@
+.webCam {
+  border-radius: 45px;
+}
+
+.captureButton {
+  background-color: #0F7173;
+  border-radius: 15px;
+  padding: 20px;
+  border: none;
+  font-size: 32px;
+  color: white;
+  
+}
