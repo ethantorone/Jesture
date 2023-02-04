@@ -1,5 +1,21 @@
+.cameraAndButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
 .webCam {
+  margin-top: 5em;
   border-radius: 45px;
+  max-width: 30%;
+  align-self: center;
+}
+
+.capturedImg {
+  margin-top: 5em;
+  border-radius: 45px;
+  max-width: 30%;
+  align-self: center;
 }
 
 .captureButton {
@@ -9,5 +25,16 @@
   border: none;
   font-size: 32px;
   color: white;
-  
+  align-self: center;  
+}
+
+.buttons {
+  align-self: center;
+  display: flex;
+  gap: 5rem;
+}
+
+.actionsList {
+  display: flex;
+  flex-direction: column;
 }
