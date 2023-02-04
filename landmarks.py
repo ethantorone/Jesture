@@ -8,7 +8,7 @@ from time import sleep
 mp_hands = mp.solutions.hands
 
 hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
-test = cv2.flip(cv2.imread("pos.jpg"), 1)
+test = cv2.flip(cv2.imread("image.jpg"), 1)
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -38,20 +38,15 @@ def process(image):
                 mp_drawing_styles.get_default_hand_connections_style())
 
         distances = processing.get_distances(landmarks)
-        print(distances)
-        diff = np.abs(np.subtract(mean_std[:,0], distances))
-        print(np.count_nonzero(np.less_equal(diff, mean_std[:, 1])) / 21)
-        if np.less_equal(diff, mean_std[:, 1] * 2).all():
-            print("fuck you")
-        else:
-            print("damn")
+        confidence = processing.get_confidence(distances, mean_std)
+        if confidence > 0.6:
+            print(":)")
 
     return image
 
-process(test)
+# process(test)
 
 
-"""
 vid = cv2.VideoCapture(0)
 
 while vid.isOpened():
@@ -68,4 +63,3 @@ while vid.isOpened():
 
 vid.release()
 cv2.destroyAllWindows()
-"""
