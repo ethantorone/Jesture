@@ -1,10 +1,17 @@
 import './App.css';
-import CameraPage from './Components/cameraPage'
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+
+const router = createBrowserRouter([
+  {
+    
+  },
+]);
 
 function App() {
   return (
     <div className="App">
-        <CameraPage/>
+      
     </div>
   );
 }
