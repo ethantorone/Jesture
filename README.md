@@ -38,5 +38,11 @@ Today, we are surrounded by voice activated and controlled smart products. Howev
     - created commands to play desired music, change volume, and switch biome in response to gestures
 
 ## Things we're proud of
+- The CSS art and animations are very pretty :star:
+- Designed gesture creation and detection algorithms from scratch and they kinda work
+- Did not get stuck trying to integrate flask server
+
+## Challenges we ran into
+- Almost got stuck trying to integrate flask server
 
 
