@@ -16,7 +16,11 @@ function RoomSim(props) {
     const [volume, setVolume] = useState(1)
     const [url, setUrl] = useState('https://youtu.be/Km71Rr9K-Bw')
     const [backgroundStlye, setBackgroundStyle] = useState("background-color:")
-    const [biome, setBiome] = useState("Snowy")
+    const [biome, setBiome] = useState("Desert")
+
+    const changeUrl = (newUrl) => {
+        setUrl(newUrl)
+    } 
 
     const togglePlay = (e) => {
         setPlaying(!playing)
@@ -30,8 +34,20 @@ function RoomSim(props) {
         setVolume(volume - 0.1 < 0 ? 0 : volume - 0.1)
     }
 
-    const changeBackground = (color) => {
+    const changeBiome = (newBiome) => {
+        setBiome(biome)
+    }
 
+    const makeSnowy = () => {
+        setBiome("Snowy")
+    }
+
+    const makeDesert = () => {
+        setBiome("Desert")
+    }
+
+    const makeHills = () => {
+        setBiome("Hills")
     }
 
     return (
