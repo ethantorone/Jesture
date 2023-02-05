@@ -2,7 +2,7 @@ import "./Snowy.css"
 
 function Snowy(props) {
     return (
-        <div>
+        <div className="snowy">
             <div class="snowfall"></div>
             <div className="snow">
                 <div class="tree1"></div>

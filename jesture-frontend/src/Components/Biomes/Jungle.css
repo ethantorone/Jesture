@@ -1,0 +1,12 @@
+.jungle {
+    background-color: #87CEEB;
+    height: inherit;
+    border-radius: inherit;
+}
+
+.ground {
+    background-color: rgb(12, 111, 12);
+    height: 10%;
+    position: relative;
+    bottom: -2.5rem;
+}

@@ -3,12 +3,21 @@ import ReactPlayer from 'react-player/youtube'
 import { useState } from 'react';
 import Cup from './Entities/Cup';
 import Snowy from './Biomes/Snowy';
+import Jungle from './Biomes/Jungle';
+import Hills from './Biomes/Hills';
+
+const biomes = {
+    "Snowy": <Snowy></Snowy>,
+    "Jungle": <Jungle></Jungle>,
+    "Hills": <Hills></Hills>
+}
 
 function RoomSim(props) {
     const [playing, setPlaying] = useState(false)
     const [volume, setVolume] = useState(1)
     const [url, setUrl] = useState('https://youtu.be/Km71Rr9K-Bw')
     const [backgroundStlye, setBackgroundStyle] = useState("background-color:")
+    const [biome, setBiome] = useState("Hills")
 
     const togglePlay = (e) => {
         setPlaying(!playing)
@@ -28,22 +37,24 @@ function RoomSim(props) {
 
     return (
         <div className="RoomSim">
-            <div className="Room">
-                <div className='Hidden'>
-                    <ReactPlayer 
-                        url={url}
-                        playing={playing}
-                        volume={volume}
-                        controls={true}
-                    ></ReactPlayer>
-                </div>
-                <div className='window'></div>
-                <Snowy></Snowy>
+            <div className='Hidden'>
+                <ReactPlayer 
+                    url={url}
+                    playing={playing}
+                    volume={volume}
+                    controls={true}
+                ></ReactPlayer>
             </div>
-            <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
-            <button className="standard-button" onClick={increaseVolume}>IncVol</button>
-            <button className="standard-button" onClick={decreaseVolume}>DecVol</button>
-            <a className="standard-anchor" href='/create-gesture'>Create Gesture</a>
+            <div className='window'>
+                {biomes[biome]}
+            </div>
+            <div className='button-container'>
+                <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
+                <button className="standard-button" onClick={increaseVolume}>IncVol</button>
+                <button className="standard-button" onClick={decreaseVolume}>DecVol</button>
+                <a className="standard-anchor" href='/create-gesture'>Create Gesture</a>
+            </div>
+            
         </div>
     )
 }

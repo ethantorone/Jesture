@@ -1,3 +1,9 @@
+.snowy {
+    background-color: rgb(10, 10, 49);
+    height: inherit;
+    border-radius: 1rem;
+}
+
 .tree1{
     height: 0;
     width: 0;
@@ -23,11 +29,10 @@
 
 .snow{
     height: 40px;
-    width: 64vw;
+    width: inherit;
     background-color: white;
     position: relative;
-    left: .4rem;
-    top: -2rem;
+    top: -2.5rem;
     border-radius: 50px;
     z-index: 5;
 }
