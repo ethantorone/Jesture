@@ -95,6 +95,7 @@ def distort(image):
     # Creates the transformation matrix and distorts image
     dst = [] 
     for i in range(5):
+        
         M = cv2.getPerspectiveTransform(pts[i], pts[4])
         img = cv2.warpPerspective(image, M, (1280, 720))
         dst.append(img)
@@ -105,6 +106,7 @@ def distort(image):
         base[180:540, 320:960] = cv2.resize(img, None, fx=0.5, fy=0.5, interpolation = cv2.INTER_AREA)
         dst.append(base)
 
+    dst.append(image)
     return dst
 
 def mean_std(array):
