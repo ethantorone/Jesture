@@ -6,6 +6,7 @@ import Hills from './Biomes/Hills';
 import Desert from './Biomes/Desert';
 import Webcam from "react-webcam";
 import React from "react";
+import { data } from 'jquery';
 
 const biomes = {
     "Snowy": <Snowy></Snowy>,
@@ -28,6 +29,7 @@ function RoomSim(props) {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
         returnFlaskPost(imageSrc);
+        getFlaskData();
     }, [webcamRef, setImgSrc]);
 
     const togglePlay = (e) => {
@@ -58,6 +60,13 @@ function RoomSim(props) {
         }
     });
     };
+
+    const getFlaskData = () => {
+        fetch('http://localhost:5000/')
+            .then(response => response.json())
+            .then(data => this.setState({ gestureNumb: data.value }));
+        console.log(data);
+    }
 
     useEffect(() => {
         const interval = setInterval(() => {
