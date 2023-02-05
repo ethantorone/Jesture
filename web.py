@@ -15,9 +15,27 @@ key_count = 1
 
 @app.route("/", methods=["GET", "POST"])
 def index():
+    response = {'detection': ''}
+    # Parse request data
     data = request.get_json()
-    print(data)
-    return data
+    image_string = data['imageSrc']
+    
+    # Add image to gestures
+    image = processing.read_image(image_string[(image_string.index(',')+1):])
+    image = cv2.resize(image, (1280, 720))
+    landmarks = processing.get_landmarks(image, hands)
+    if landmarks is not None:
+        distances = processing.get_distances(landmarks)
+        key, value = gestures.predict_gesture(distances)
+        if key:
+            response['detection']  = key
+        else:
+            response['detection'] = -1
+    else:
+        response['detection'] = -1
+
+    print(response)
+    return response
 
 @app.route("/cat", methods=["GET"])
 def cat():
@@ -47,10 +65,12 @@ def post_example():
 
     # Parse request data
     data = request.get_json()
+    print(data)
     image_string = data['imgSrc']
     
     # Add image to gestures
     image = processing.read_image(image_string[(image_string.index(',')+1):])
+    image = cv2.resize(image, (1280, 720))
     images = []
     distorted = processing.distort(image)
     for image in distorted:
