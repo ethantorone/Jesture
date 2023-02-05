@@ -63,8 +63,12 @@ function RoomSim(props) {
     }, []);
 
 
-    const doAction = (action) => {
-        switch (action) {
+    const doAction = (index) => {
+        if (index <= 0) {
+            console.log('No Gesture Detected')
+            return
+        }
+        switch (gestureActions[index - 1]) {
             case 'incVal': 
                 setVolume(volume + 0.1 > 1 ? 1 : volume + 0.1)
                 break
@@ -86,7 +90,7 @@ function RoomSim(props) {
                 setBiome('Desert')
                 break
             default:
-                setUrl(action)
+                setUrl(gestureActions[index - 1])
                 break
         }
     }
