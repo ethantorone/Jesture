@@ -72,3 +72,15 @@ label {
 .bottomOfPage {
   height: 15rem;
 }
+
+.createGestureButton {
+  background-color: #0F7173;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 4rem;
+  border: none;
+  font-size: 32px;
+  color: white;
+  align-self: center; 
+  cursor: pointer; 
+}
