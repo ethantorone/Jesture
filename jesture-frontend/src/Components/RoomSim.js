@@ -1,15 +1,12 @@
 import roomSimStyles from './RoomSim.modules.css'
 import ReactPlayer from 'react-player/youtube'
 import { useState } from 'react';
-import Cup from './Entities/Cup';
 import Snowy from './Biomes/Snowy';
-import Jungle from './Biomes/Jungle';
 import Hills from './Biomes/Hills';
 import Desert from './Biomes/Desert';
 
 const biomes = {
     "Snowy": <Snowy></Snowy>,
-    "Jungle": <Jungle></Jungle>,
     "Hills": <Hills></Hills>,
     "Desert": <Desert></Desert>
 }
@@ -19,7 +16,7 @@ function RoomSim(props) {
     const [volume, setVolume] = useState(1)
     const [url, setUrl] = useState('https://youtu.be/Km71Rr9K-Bw')
     const [backgroundStlye, setBackgroundStyle] = useState("background-color:")
-    const [biome, setBiome] = useState("Desert")
+    const [biome, setBiome] = useState("Snowy")
 
     const togglePlay = (e) => {
         setPlaying(!playing)

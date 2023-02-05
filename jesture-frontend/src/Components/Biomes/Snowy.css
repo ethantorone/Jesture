@@ -1,7 +1,37 @@
 .snowy {
     background-color: rgb(10, 10, 49);
     height: inherit;
-    border-radius: 1rem;
+    width: inherit;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: end;
+}
+
+.moon {
+    height: 3.5rem;
+    width: 3.5rem;
+    background-color: aliceblue;
+    border-radius: 3rem;
+    position: absolute;
+    align-self: end;
+    top: 5rem;
+    right: 3rem;
+    animation: 40s infinite alternate-reverse moon;
+    animation-timing-function: linear;
+}
+
+@keyframes moon {
+    0%{
+       top: 5rem;
+       right: 3rem;
+    }
+    50%{
+      transform: translate(-20rem, -4rem);
+    }
+    100%{
+        transform: translate(-40rem);
+    }
 }
 
 .tree1{
@@ -10,10 +40,10 @@
     border-bottom: 6rem solid #5b6b09;
     border-left: 1.8rem solid transparent;
     border-right: 1.8rem solid transparent;
-    position: relative;
+    position: absolute;
     left:10rem;
-    top:-5rem;
-    z-index: 2;
+    bottom: 2.1vh;
+    z-index: 5;
 }
 .tree2{
     height: 0;
@@ -21,19 +51,18 @@
     border-bottom: 10rem solid #718710;
     border-left: 2rem solid transparent;
     border-right: 2rem solid transparent;
-    position: relative;
+    position: absolute;
     left:7rem;
-    top:-15rem;
+    bottom: 2vh;
     z-index: 5;
 }
 
 .snow{
-    height: 40px;
+    height: 4vh;
     width: inherit;
     background-color: white;
     position: relative;
-    top: -2.5rem;
-    border-radius: 50px;
+    border-radius: 0 0 2rem 2rem;
     z-index: 5;
 }
 
@@ -46,7 +75,7 @@
     border-radius: 2rem;
     animation:snowfall 5s linear forwards infinite; 
     -webkit-animation:snowfall 5s linear forwards infinite; 
-    z-index: 9
+    z-index: 2
 }
 
 @keyframes snowfall{
