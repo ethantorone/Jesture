@@ -1,16 +1,54 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
+import ActionSelect from "./actionSelect";
 import gestureCreateStyles from "./gestureCreate.modules.css";
+import $ from 'jquery';
 
-const WebcamCapture = () => {
+
+function GestureCreate(props) {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
-  const [displayGestureSelect, setDisplayGestureSelect] = useState(false);
-
+  const [displayActionSelect, setDisplayActionSelect] = useState(false);
+  console.log(props.gestureActions);
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
+    console.log(imageSrc)
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
+
+  function postImage(event) {
+    $.ajax({
+      type:"POST",
+      url:"/test",
+
+      context: document.body
+    })
+  };
+
+  const onSubmitImage = () => {
+    setDisplayActionSelect(true);
+    returnFlaskPost();
+  };
+
+  useEffect(() => {
+    const element = document.getElementById("pageBottom");
+    if (element) {
+      element.scrollIntoView({behavior: 'smooth'});
+    }
+  }, [displayActionSelect]);
+
+  const returnFlaskPost = () => {
+    return fetch( 'http://localhost:5000/', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }, 
+      method: 'POST',
+      body: {
+        imgSrc
+      }
+    });
+  };
 
   return (
     <div className="cameraAndButtons">
@@ -29,54 +67,21 @@ const WebcamCapture = () => {
       {imgSrc ? 
         <div className="buttons">
           <button className="captureButton" onClick={() => setImgSrc(null)}>TRY AGAIN</button>
-          <button className="captureButton">SUBMIT GESTURE</button>
+          <button className="captureButton" onClick={onSubmitImage}>SUBMIT GESTURE</button>
         </div>
       :
+      <div>
         <button className="captureButton" onClick={capture}>CAPTURE PHOTO</button>
+      </div>
+
       }
-    </div>
-  );
-};
 
-const ActionSelect = () => {
-  return (
-    <div>
-      <h1>SELECT AN ACTION TO ASSOCIATE WITH YOUR GESTURE :</h1>
-      <form className="actionsList">
-        <label>
-          <input type="radio" value="option1" checked={true} />
-          PAUSE/PLAY MUSIC
-        </label>
-        <label>
-          <input type="radio" value="option1" checked={true} />
-          INCREASE VOLUME
-        </label>
-        <label>
-          <input type="radio" value="option1" checked={true} />
-          DECREASE VOLUME
-        </label>
-        <label>
-          <input type="radio" value="option1" checked={true} />
-          PLAY SONG
-        </label>
-        <label>
-          <input type="radio" value="option1" checked={true} />
-          OTHER
-        </label>
-      </form>
-    </div>
-
-  );
-};
-
-function GestureCreate(props) {
-  return (
-    <div className="gesture-page">
-      <header className="gesture-header">
-        <a className="exit-button" href='/'>Return to Room</a>
-      </header>
-      <WebcamCapture/>
-      <ActionSelect/>
+      {displayActionSelect ? 
+        <ActionSelect gestureActions={props.gestureActions}/> 
+        : 
+        <></>
+      }
+      <div className="bottomOfPage" id="pageBottom"></div>
     </div>
   );
 };

@@ -12,13 +12,14 @@ div {
   margin-top: 4em;
   border-radius: 45px;
   max-width: 30%;
+
   align-self: center;
 }
 
 .capturedImg {
   margin-top: 5em;
-  border-radius: 45px;
-  max-width: 30%;
+  border-radius: 2rem;
+  max-width: 60%;
   align-self: center;
 }
 
@@ -29,7 +30,8 @@ div {
   border: none;
   font-size: 32px;
   color: white;
-  align-self: center;  
+  align-self: center; 
+  cursor: pointer; 
 }
 
 .buttons {
@@ -38,30 +40,52 @@ div {
   gap: 5rem;
 }
 
+.actionSelection {
+  margin-top: 26rem;
+}
+
 .actionsList {
   display: flex;
   flex-direction: column;
+  font-size: 32px;
+  align-items: flex-start;
+  padding-left: 6rem;
 }
 
-.gesture-page {
-  width: 100%
+input[type="radio"] {
+  accent-color: #0F7173;
+  transform: scale(2);
+  border: #0F7173;
+  margin-right: 1rem;
+  vertical-align: middle;
 }
 
-.exit-button {
+label {
+  vertical-align: middle;
+}
+
+.songTitleBox {
+  border-radius: 10px;
+  font-size: 32px;
+}
+
+.otherCommandBox {
+  border-radius: 10px;
+  font-size: 32px;
+}
+
+.bottomOfPage {
+  height: 15rem;
+}
+
+.createGestureButton {
   background-color: #0F7173;
   border-radius: 15px;
-  padding: 0.5rem;
-  padding-top: 0.25rem;
+  padding: 20px;
+  margin-top: 4rem;
   border: none;
-  font-size: 1.5rem;
+  font-size: 32px;
   color: white;
-  text-decoration: none;  
-  margin: 1rem;
-}
-
-.gesture-header {
-  display: flex;
-  justify-content: start;
-  position: fixed;
-  /* z-index: -1; */
+  align-self: center; 
+  cursor: pointer; 
 }
