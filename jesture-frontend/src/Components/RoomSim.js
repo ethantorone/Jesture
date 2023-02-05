@@ -7,6 +7,7 @@ import Desert from './Biomes/Desert';
 import Webcam from "react-webcam";
 import React from "react";
 import { data } from 'jquery';
+import { useNavigate } from "react-router-dom";
 
 const biomes = {
     "Snowy": <Snowy></Snowy>,
@@ -20,10 +21,13 @@ function RoomSim(props) {
     const [url, setUrl] = useState('https://youtu.be/Km71Rr9K-Bw')
     const [backgroundStlye, setBackgroundStyle] = useState("background-color:")
     const [biome, setBiome] = useState("Snowy")
-    
+
+    const navigate = useNavigate();
+
     const webcamRef = React.useRef(null);
     const [imgSrc, setImgSrc] = React.useState(null);
-
+    
+    console.log(props.gestureActions);
     const capture = React.useCallback(() => {
         console.log("capture happens");
         const imageSrc = webcamRef.current.getScreenshot();
@@ -82,7 +86,7 @@ function RoomSim(props) {
     return (
         <div className="RoomSim">
             <Webcam
-                className="webCam"
+                className="simRoomWebCam"
                 mirrored
                 audio={false}
                 ref={webcamRef}
@@ -103,7 +107,7 @@ function RoomSim(props) {
                 <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
                 <button className="standard-button" onClick={increaseVolume}>IncVol</button>
                 <button className="standard-button" onClick={decreaseVolume}>DecVol</button>
-                <a className="standard-anchor" href='/create-gesture'>Create Gesture</a>
+                <button className="standard-anchor" onClick={() => navigate("/create-gesture")}>Create Gesture</button>
             </div>
             
         </div>

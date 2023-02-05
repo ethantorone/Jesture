@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ActionSelect = (props) => {
   const [selectedAction, setSelectedAction] = useState("");
+  const navigate = useNavigate();
 
   function onValueChange(event){
     setSelectedAction(event.target.value);
@@ -11,6 +13,7 @@ const ActionSelect = (props) => {
     event.preventDefault();
     props.gestureActions.push(selectedAction);
     console.log(props.gestureActions);
+    navigate("/");
   }
 
   return (

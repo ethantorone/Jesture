@@ -7,7 +7,7 @@ const gestureActions = [];
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <RoomSim></RoomSim>
+    element: <RoomSim gestureActions={gestureActions}></RoomSim>
   },
   {
     path: 'create-gesture',

@@ -44,7 +44,8 @@
     color: white;
     text-decoration: none;
 }
-.webCam {
+
+.simRoomWebCam {
     max-width: 10rem;
     border-radius: 1rem;
     right: 60rem;
