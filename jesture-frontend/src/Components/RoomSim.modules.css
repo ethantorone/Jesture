@@ -1,16 +1,28 @@
-.Room {
-    max-width: 80vw;
-    min-width: 60vw;
-    max-height: 80vh;
-    min-height: 60vh;
-    margin-top: 10rem;
-    margin-bottom: 3rem;
-    border-radius: 2rem;
-    background-color: white;
+.RoomSim{
+    display: flex;
+    justify-content: center;
 }
 
 .Hidden {
     visibility: hidden;
+    height: 0px;
+}
+
+.button-container {
+    position: absolute;
+    margin-top: 80vh;
+}
+
+.window {
+    width: 64vw;
+    height: 64vh;
+    margin-top: 10vh;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 0.5rem;
+    border-radius: 2rem;
+    z-index: 10;
+    position: absolute;
 }
 
 .standard-button {
@@ -26,8 +38,12 @@
     background-color: #0F7173;
     border-radius: 15px;
     padding: 20px;
+    padding-top: 15px;
     border: none;
-    font-size: 32px;
+    font-size: 2rem;
     color: white;
     text-decoration: none;
 }
+
+
+

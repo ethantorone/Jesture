@@ -1,3 +1,7 @@
+div {
+  z-index: 1;
+}
+
 .cameraAndButtons {
   display: flex;
   flex-direction: column;
@@ -5,9 +9,10 @@
 }
 
 .webCam {
-  margin-top: 5em;
-  border-radius: 2rem;
-  max-width: 60%;
+  margin-top: 4em;
+  border-radius: 45px;
+  max-width: 30%;
+
   align-self: center;
 }
 

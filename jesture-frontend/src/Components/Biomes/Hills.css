@@ -1,0 +1,77 @@
+.ufo {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    left: 10vw;
+    bottom: 25vh;
+    animation: 2s infinite alternate ufo;
+    animation-timing-function: linear;
+}
+
+@keyframes ufo {
+    0%{
+        bottom: 45vh;
+    }
+    100%{
+        bottom:50vh;
+    }
+}
+
+.top-circle {
+    height: 3rem;
+    width: 4rem;
+    background-color: lightgray;
+    border-radius: 10rem 10rem 0 0;
+    position: absolute;
+    bottom: 0rem;
+    left: 2rem;
+}
+
+.bottom-oval {
+    height: 1.5rem;
+    width: 8rem;
+    background-color: gray;
+    border-radius: 2rem;
+    position: absolute;
+    /* bottom: 0rem; */
+}
+
+
+.hills {
+    background-color: rgb(151, 206, 255);
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    position: inherit;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.hill1 {
+    border-bottom: 30vh solid #096b13;
+    border-left: 20vw solid transparent;
+    border-right: 20vw solid transparent;
+    position: absolute;
+    align-self: start;
+    left: 1rem;
+}
+
+.hill2 {
+    border-bottom: 40vh solid #097e28;
+    border-left: 22vw solid transparent;
+    border-right: 22vw solid transparent;
+    /* position: absolute; */
+    margin-right: 2rem;
+    align-self: end;
+}
+
+.hill3 {
+    border-bottom: 50vh solid rgb(67, 176, 67);
+    border-left: 25vw solid transparent;
+    border-right: 25vw solid transparent;
+    position: absolute;
+    border-radius: 5rem 10rem 2rem 2rem; 
+    border-collapse: separate; 
+    left: 8vw;
+}
