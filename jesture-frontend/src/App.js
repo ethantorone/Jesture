@@ -3,6 +3,7 @@ import GestureCreate from './Components/gestureCreate';
 import RoomSim from './Components/RoomSim';
 import './App.css';
 
+const gestureActions = [];
 const router = createBrowserRouter([
   {
     path: '/',
@@ -10,7 +11,7 @@ const router = createBrowserRouter([
   },
   {
     path: 'create-gesture',
-    element: <GestureCreate></GestureCreate>
+    element: <GestureCreate gestureActions={gestureActions}></GestureCreate>
   }
 ]);
 
