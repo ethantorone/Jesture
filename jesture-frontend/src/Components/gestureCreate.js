@@ -9,21 +9,12 @@ function GestureCreate(props) {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
   const [displayActionSelect, setDisplayActionSelect] = useState(false);
+
   console.log(props.gestureActions);
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
-    console.log(imageSrc)
     setImgSrc(imageSrc);
   }, [webcamRef, setImgSrc]);
-
-  function postImage(event) {
-    $.ajax({
-      type:"POST",
-      url:"/test",
-
-      context: document.body
-    })
-  };
 
   const onSubmitImage = () => {
     setDisplayActionSelect(true);

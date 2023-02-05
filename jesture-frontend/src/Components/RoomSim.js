@@ -1,9 +1,11 @@
 import roomSimStyles from './RoomSim.modules.css'
 import ReactPlayer from 'react-player/youtube'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Snowy from './Biomes/Snowy';
 import Hills from './Biomes/Hills';
 import Desert from './Biomes/Desert';
+import Webcam from "react-webcam";
+import React from "react";
 
 const biomes = {
     "Snowy": <Snowy></Snowy>,
@@ -17,6 +19,16 @@ function RoomSim(props) {
     const [url, setUrl] = useState('https://youtu.be/Km71Rr9K-Bw')
     const [backgroundStlye, setBackgroundStyle] = useState("background-color:")
     const [biome, setBiome] = useState("Snowy")
+    
+    const webcamRef = React.useRef(null);
+    const [imgSrc, setImgSrc] = React.useState(null);
+
+    const capture = React.useCallback(() => {
+        console.log("capture happens");
+        const imageSrc = webcamRef.current.getScreenshot();
+        setImgSrc(imageSrc);
+        returnFlaskPost(imageSrc);
+    }, [webcamRef, setImgSrc]);
 
     const togglePlay = (e) => {
         setPlaying(!playing)
@@ -34,8 +46,36 @@ function RoomSim(props) {
 
     }
 
+    const returnFlaskPost = (imageSrc) => {
+    return fetch( 'http://localhost:5000/', {
+        headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }, 
+        method: 'POST',
+        body: {
+        imageSrc
+        }
+    });
+    };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            capture();
+        }, 500);
+      
+        return () => clearInterval(interval);
+      }, []);
+
     return (
         <div className="RoomSim">
+            <Webcam
+                className="webCam"
+                mirrored
+                audio={false}
+                ref={webcamRef}
+                screenshotFormat="image/jpeg"
+            />
             <div className='Hidden'>
                 <ReactPlayer 
                     url={url}
