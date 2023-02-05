@@ -1,0 +1,72 @@
+:root {
+    --sand: rgb(253, 243, 198);
+    --dark-sand: rgb(225, 216, 174);
+    --sky: rgb(162, 212, 255);
+    --sun: rgb(243, 206, 95);
+}
+
+.sun {
+    margin-left: 5vw;
+    height: 5rem;
+    width: 5rem;
+    align-self: start;
+    justify-self: start;
+    background-color: var(--sun);
+    z-index: 8;
+    border-radius: 5rem;
+    animation: 4s infinite alternate sun;
+    animation-timing-function: linear;
+}
+
+@keyframes sun {
+    0%{
+        box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.4);
+    }
+    100%{
+        box-shadow: 0px 0px 20px 1px rgba(0, 0, 0, 0.8);
+    }
+}
+
+.desert {
+    background-color: var(--sky);
+    height: inherit;
+    width: inherit;
+    border-radius: inherit;
+    position: inherit;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.left-peak {
+    height: 25vh;
+    width: 8vw;
+    background-color: var(--sand);
+    border-radius: 10rem 10rem 0 2rem;
+    position: absolute;
+}
+
+.left-slope {
+    border-bottom: 24vh solid var(--sand);
+    border-left: 5vw solid transparent;
+    border-right: 20vw solid transparent;
+    position: absolute;
+    left: 1vw;
+    border-radius: 0 0 0 2rem;
+}
+
+.right-peak {
+    height: 40vh;
+    width: 20vw;
+    background-color: var(--dark-sand);
+    border-radius: 20rem 10rem 2rem 0;
+    align-self: end;
+}
+
+.right-slope {
+    border-bottom: 37.8vh solid var(--dark-sand);
+    border-left: 35vw solid transparent;
+    border-right: 12vw solid transparent;
+    position: absolute;
+    align-self: end;
+    border-radius: 0 0 2rem 0;
+}
