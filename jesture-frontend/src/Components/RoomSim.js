@@ -63,7 +63,8 @@ function RoomSim(props) {
     }, []);
 
 
-    const doAction = (index) => {
+    const doAction = (response) => {
+        index = response.value.detection
         if (index <= 0) {
             console.log('No Gesture Detected')
             return
