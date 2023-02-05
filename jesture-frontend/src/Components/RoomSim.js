@@ -29,7 +29,7 @@ function RoomSim(props) {
         const imageSrc = webcamRef.current.getScreenshot();
         setImgSrc(imageSrc);
         returnFlaskPost(imageSrc);
-        getFlaskData();
+        // getFlaskData();
     }, [webcamRef, setImgSrc]);
 
     const togglePlay = (e) => {
@@ -55,9 +55,12 @@ function RoomSim(props) {
         'Content-Type': 'application/json'
         }, 
         method: 'POST',
-        body: {
-        imageSrc
-        }
+        body: JSON.stringify({
+            imageSrc
+        })
+    })
+    .then(function(response) {
+        console.log(response.json());
     });
     };
 

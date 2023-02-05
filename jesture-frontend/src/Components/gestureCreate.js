@@ -29,15 +29,15 @@ function GestureCreate(props) {
   }, [displayActionSelect]);
 
   const returnFlaskPost = () => {
-    return fetch( 'http://localhost:5000/', {
+    return fetch( 'http://localhost:5000/post', {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }, 
       method: 'POST',
-      body: {
+      body: JSON.stringify({
         imgSrc
-      }
+      })
     });
   };
 
