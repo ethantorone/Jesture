@@ -1,6 +1,22 @@
+import base64
 import cv2
 import numpy as np
 import mediapipe as mp
+
+def read_image(data):
+    """
+    Reads base64 encoded image from frontend
+    
+    Args:
+        data [str]: base64 encoded image
+    
+    Returns:
+        image [open cv image]: opencv image
+    """
+    array = np.fromstring(base64.b64decode(data), np.uint8)
+    image = cv2.imdecode(array, cv2.IMREAD_COLOR)
+    return image
+
 
 def get_landmarks(image, hands):
     """
