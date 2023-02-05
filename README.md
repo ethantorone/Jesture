@@ -1,5 +1,3 @@
-# Jesture
-
 ## Add gesture controls to any product :wave:
 ***
 ## Inspiration
@@ -40,9 +38,22 @@ Today, we are surrounded by voice activated and controlled smart products. Howev
 ## Things we're proud of
 - The CSS art and animations are very pretty :star:
 - Designed gesture creation and detection algorithms from scratch and they kinda work
-- Did not get stuck trying to integrate flask server
+- Rounded corners
+- Did not get stuck trying to integrate flask server :)
 
 ## Challenges we ran into
 - Almost got stuck trying to integrate flask server
+- CSS Animations
+- Processing hand landmark coordinates into gestures
+- Detecting gestures
+- Mentally
 
+## What we learned
+- OpenCV for image transformations
+- How to design metrics for comparing data
+- Convert everything into a NumPy Array
+- We can make a GET with a POST but not a POST with a GET
 
+## What's next
+- Test integrating Jesture with smart home devices
+- shower, sleep, wake up late, hit a nice brunch, go take a nap
