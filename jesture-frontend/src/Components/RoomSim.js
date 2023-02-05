@@ -27,7 +27,7 @@ function RoomSim(props) {
     const webcamRef = React.useRef(null);
     const [imgSrc, setImgSrc] = React.useState(null);
     
-    console.log(props.gestureActions);
+    // console.log(props.gestureActions);
     const capture = React.useCallback(() => {
         console.log("capture happens");
         const imageSrc = webcamRef.current.getScreenshot();
@@ -36,21 +36,6 @@ function RoomSim(props) {
         // getFlaskData();
     }, [webcamRef, setImgSrc]);
 
-    const togglePlay = (e) => {
-        setPlaying(!playing)
-    }
-
-    const increaseVolume = () => {
-        setVolume(volume + 0.1 > 1 ? 1 : volume + 0.1)
-    }
-
-    const decreaseVolume = () => {
-        setVolume(volume - 0.1 < 0 ? 0 : volume - 0.1)
-    }
-
-    const changeBackground = (color) => {
-
-    }
 
     const returnFlaskPost = (imageSrc) => {
     return fetch( 'http://localhost:5000/', {
@@ -65,15 +50,9 @@ function RoomSim(props) {
     })
     .then(function(response) {
         console.log(response.json());
+        doAction(response.json())
     });
     };
-
-    const getFlaskData = () => {
-        fetch('http://localhost:5000/')
-            .then(response => response.json())
-            .then(data => this.setState({ gestureNumb: data.value }));
-        console.log(data);
-    }
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -81,7 +60,37 @@ function RoomSim(props) {
         }, 500);
       
         return () => clearInterval(interval);
-      }, []);
+    }, []);
+
+
+    doAction = (action) => {
+        switch (action) {
+            case 'incVal': 
+                setVolume(volume + 0.1 > 1 ? 1 : volume + 0.1)
+                break
+
+            case 'decVal':
+                setVolume(volume - 0.1 < 0 ? 0 : volume - 0.1)
+                break
+
+            case 'pauseAndPlay':
+                setPlaying(!playing)
+                break
+            case 'Snowy': 
+                setBiome("Snowy")
+                break
+            case 'Hills':
+                setBiome("Hills")
+                break
+            case 'Desert':
+                setBiome('Desert')
+                break
+            default:
+                setUrl(action)
+                break
+        }
+    }
+
 
     return (
         <div className="RoomSim">
@@ -104,9 +113,6 @@ function RoomSim(props) {
                 {biomes[biome]}
             </div>
             <div className='button-container'>
-                <button className="standard-button" onClick={togglePlay}>Play/Pause</button>
-                <button className="standard-button" onClick={increaseVolume}>IncVol</button>
-                <button className="standard-button" onClick={decreaseVolume}>DecVol</button>
                 <button className="standard-anchor" onClick={() => navigate("/create-gesture")}>Create Gesture</button>
             </div>
             
