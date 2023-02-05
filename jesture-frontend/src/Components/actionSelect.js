@@ -33,6 +33,18 @@ const ActionSelect = (props) => {
           <label>DECREASE VOLUME</label>
         </label>
         <label>
+          <input type="radio" value="Snowy" onChange={onValueChange} name="actions"/>
+          <label>CHANGE BIOME: SNOWY</label>
+        </label>
+        <label>
+          <input type="radio" value="Hills" onChange={onValueChange} name="actions"/>
+          <label>CHANGE BIOME: HILLS</label>
+        </label>
+        <label>
+          <input type="radio" value="Desert" onChange={onValueChange} name="actions"/>
+          <label>CHANGE BIOME: DESERT</label>
+        </label>
+        <label>
           <input type="radio" value="playSong" onChange={onValueChange} name="actions"/>
           <label>PLAY SONG:  <input type='text' className="songTitleBox"></input> </label>
         </label>
