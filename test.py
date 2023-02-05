@@ -9,18 +9,32 @@ from time import sleep
 mp_hands = mp.solutions.hands
 
 hands = mp_hands.Hands(static_image_mode=True, max_num_hands=1, min_detection_confidence=0.5)
-for file in os.listdir("./images"):
-    images = []
-    distorted = processing.distort(cv2.imread("./images/" + file))
+
+images = []
+for file in os.listdir("./images/fuckyou/"):
+    distorted = processing.distort(cv2.imread("./images/fuckyou/" + file))
     for image in distorted:
         landmarks = processing.get_landmarks(image, hands)
         if landmarks is not None:
             images.append(processing.get_distances(landmarks))
     
-    if images:
-        images = np.array(images)
-        mean_std= processing.mean_std(images)
-        gestures.store_gesture(mean_std, file[:-4])
+if images:
+    images = np.array(images)
+    mean_std= processing.mean_std(images)
+    gestures.store_gesture(mean_std, "fuckyou")
+
+images = []
+for file in os.listdir("./images/ily"):
+    distorted = processing.distort(cv2.imread("./images/ily/" + file))
+    for image in distorted:
+        landmarks = processing.get_landmarks(image, hands)
+        if landmarks is not None:
+            images.append(processing.get_distances(landmarks))
+    
+if images:
+    images = np.array(images)
+    mean_std= processing.mean_std(images)
+    gestures.store_gesture(mean_std, "ily")
 
 mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
@@ -39,9 +53,9 @@ def process(image):
                 mp_drawing_styles.get_default_hand_connections_style())
 
         distances = processing.get_distances(landmarks)
-        key = gestures.predict_gesture(distances)
+        key, value = gestures.predict_gesture(distances)
         if key:
-            print(key)
+            print(f"{key}: {value}")
 
     return image
 

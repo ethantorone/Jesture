@@ -39,15 +39,22 @@ def get_distances(array):
     Returns:
         array [np array] array of euclidean distances of each landmark to wrist
     """
-    # Flatten array into x and y plane
-    z_array = array[:,2]
-    array = array[:,[0, 1]]
-    z_array = np.tile(z_array, (2, 1)).transpose() + 1
-    normal_array = np.divide(array, z_array)
-    max = np.amax(normal_array)
-    normal_array = normal_array / max
-    wrist = np.tile(normal_array[0], (21, 1))
-    distances = np.sum(np.square(np.subtract(normal_array, wrist)), axis=1)
+
+    # flatten array to xy plane
+    xy_projection = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 0]])
+    flat_array = array @ xy_projection
+
+    # set origin to wrist
+    wrist = np.tile(flat_array[0], (21, 1))
+    centered = np.subtract(flat_array, wrist)
+
+    # normalize
+    max = np.amax(np.abs(centered))
+    normal_array = centered / max
+
+    # get square distances
+    distances = np.sqrt(np.sum(np.square(normal_array), axis=1))
+
     return distances
 
 def distort(image):

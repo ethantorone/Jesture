@@ -53,7 +53,7 @@ def predict_gesture(distances):
             g_max = confidence
     
     if g_max > threshold:
-        return g_key
+        return g_key, g_max
     
-    return None
+    return None, None
          
