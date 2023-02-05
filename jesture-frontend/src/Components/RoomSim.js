@@ -63,7 +63,7 @@ function RoomSim(props) {
     }, []);
 
 
-    doAction = (action) => {
+    const doAction = (action) => {
         switch (action) {
             case 'incVal': 
                 setVolume(volume + 0.1 > 1 ? 1 : volume + 0.1)

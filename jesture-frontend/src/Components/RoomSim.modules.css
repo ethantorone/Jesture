@@ -1,6 +1,7 @@
 .RoomSim{
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .Hidden {
@@ -48,6 +49,8 @@
 .simRoomWebCam {
     max-width: 10rem;
     border-radius: 1rem;
-    right: 60rem;
+    position: absolute;
+    left: 4vw;
+    top: 10vh;
 }
 
