@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const ActionSelect = (props) => {
   const [selectedAction, setSelectedAction] = useState("");
-  const [url, setUrl] = ('')
+  const [url, setUrl] = useState('')
   const navigate = useNavigate();
 
   function onValueChange(event){
@@ -13,6 +13,7 @@ const ActionSelect = (props) => {
   function createGesture(event) {
     event.preventDefault();
     if (selectedAction === 'playSong') {
+      console.log(url)
       props.gestureActions.push(url)
     } else {
       props.gestureActions.push(selectedAction);
@@ -52,7 +53,7 @@ const ActionSelect = (props) => {
         </label>
         <label>
           <input type="radio" value="playSong" onChange={onValueChange} name="actions"/>
-          <label>PLAY SONG:  <input type='text' className="songTitleBox" value={url} onChange={(e) => {setUrl(e.target.value)}}></input> </label>
+          <label>PLAY SONG:  <input type='text' className="songTitleBox" value={url} onChange={(e) => setUrl(e.target.value)}></input> </label>
         </label>
         <button className="createGestureButton" onClick={createGesture}>CREATE GESTURE</button>
       </form>

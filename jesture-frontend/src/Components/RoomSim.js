@@ -48,10 +48,17 @@ function RoomSim(props) {
             imageSrc
         })
     })
-    .then(function(response) {
-        console.log(response.json());
-        doAction(response.json())
-    });
+    .then(response => 
+        response.json().then(data => ({
+            data: data,
+            detection: data.detection
+        })).then(res => {
+            console.log(res);
+            doAction(res.detection);
+            console.log(res.detection);
+            // console.log(res.status, res.data.title);
+            console.log(playing)
+        }));
     };
 
     useEffect(() => {
@@ -63,13 +70,13 @@ function RoomSim(props) {
     }, []);
 
 
-    const doAction = (response) => {
-        index = response.value.detection
+    const doAction = (index) => {
         if (index <= 0) {
             console.log('No Gesture Detected')
             return
         }
-        switch (gestureActions[index - 1]) {
+        console.log(props.gestureActions)
+        switch (props.gestureActions[index - 1]) {
             case 'incVal': 
                 setVolume(volume + 0.1 > 1 ? 1 : volume + 0.1)
                 break
@@ -79,7 +86,8 @@ function RoomSim(props) {
                 break
 
             case 'pauseAndPlay':
-                setPlaying(!playing)
+                console.log(!playing)
+                setPlaying(prev => !prev)
                 break
             case 'Snowy': 
                 setBiome("Snowy")
@@ -91,7 +99,7 @@ function RoomSim(props) {
                 setBiome('Desert')
                 break
             default:
-                setUrl(gestureActions[index - 1])
+                setUrl(props.gestureActions[index - 1])
                 break
         }
     }
