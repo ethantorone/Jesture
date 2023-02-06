@@ -14,7 +14,7 @@ def get_confidence(distances, mean_std):
     Return:
         confidence [float] confidence in the match
     """
-
+    print(gestures)
     dist_sum = np.sum(np.abs(np.subtract(mean_std[:,0], distances)))
     std_sum = np.sum(mean_std[:, 1])
     confidence = 1 - (abs(dist_sum - std_sum) / std_sum)
@@ -47,7 +47,7 @@ def predict_gesture(distances):
     g_key = None
     for key in gestures.keys():
         confidence = get_confidence(distances, gestures[key])
-        # print(f"{key}: {confidence}")
+        print(f"{key}: {confidence}")
         if g_max < confidence:
             g_key = key
             g_max = confidence
